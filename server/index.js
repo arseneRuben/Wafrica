@@ -67,7 +67,12 @@ const CONNECTION_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
+    .then(() => {app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`))
+      /* ADD DATA ONE TIME */
+    //User.insertMany(users);
+    //Post.insertMany(posts);
+})
+
     .catch((error) => console.log(`${error} did not connect`));
 
     //mongoose.set('useFindAndModify', false);
