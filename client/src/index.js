@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./state";
+
 import { Provider } from "react-redux";
 import {
   persistStore,

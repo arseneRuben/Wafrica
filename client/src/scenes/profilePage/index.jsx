@@ -1,5 +1,5 @@
 const ProfilePage = () => {
-    return <div> HomePage</div>
+    return <div> Profile Page</div>
 
 };
 

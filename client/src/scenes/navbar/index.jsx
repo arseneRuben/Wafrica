@@ -1,6 +1,6 @@
-const LoginPage = () => {
-    return <div> HomePage</div>
+const NavBar = () => {
+    return <div>NavBar</div>
 
 };
 
-export default LoginPage;
+export default NavBar;
