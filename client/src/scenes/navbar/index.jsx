@@ -56,7 +56,7 @@ const Navbar = () => {
             },
           }}
         >
-          Wafrica Forum
+          Wafricapedia
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
