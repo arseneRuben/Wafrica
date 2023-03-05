@@ -18,16 +18,15 @@ import { verifyToken } from "./middleware/auth.js";
 import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js";
 
-import User from "./models/User.js";
-import Post from "./models/Post.js";
-import { users, posts } from "./data/index.js";
+
 
 
 /* CONFIGURATIONS */
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-dotenv.config({ path: './config/.env' });;
+dotenv.config({ path: './config/.env' });
+//Initialize app
 const app = express();
 app.use(express.json());
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin' }));

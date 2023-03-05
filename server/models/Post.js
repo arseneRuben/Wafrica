@@ -28,6 +28,10 @@ const postSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
+    createdAt: {
+      type: Date,
+      default: new Date(),
+  },
   },
   { timestamps: true }
 );
