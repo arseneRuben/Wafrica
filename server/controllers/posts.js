@@ -29,7 +29,7 @@ export const createPost = async (req, res) => {
 };
 
 /* READ */
-export const getFeedPosts = async (req, res) => {
+export const getPosts = async (req, res) => {
   try {
     const post = await Post.find().sort( { createdAt: -1 } );
     res.status(200).json(post);

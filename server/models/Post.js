@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    youtubeId: {
+      type: String,
+      default: "",
+  }, 
     title: String,
     location: String,
     description: String,

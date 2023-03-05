@@ -21,9 +21,11 @@ import {
   Close,
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { setMode, setLogout } from  "../../state" ;
-import { useNavigate } from "react-router-dom";
+import { setMode, setLogout, setLogin } from  "../../state" ;
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import FlexBetween from "../../components/FlexBetween";
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 
 const Navbar = () => {
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
@@ -31,7 +33,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
-
+  const isUserConnected = (user != null);
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -39,8 +41,8 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user.firstName}`;
-  //const fullName = `Samuel`;
+  const fullName = `${isUserConnected ? user.firstName: "" }`;
+
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
       <FlexBetween gap="1.75rem">
@@ -56,7 +58,7 @@ const Navbar = () => {
             },
           }}
         >
-          FacebookApp
+          WafricaPedia
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
@@ -68,11 +70,13 @@ const Navbar = () => {
             <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
+             
             </IconButton>
+
           </FlexBetween>
         )}
       </FlexBetween>
-
+      <OndemandVideoIcon />  
       {/* DESKTOP NAV */}
       {isNonMobileScreens ? (
         <FlexBetween gap="2rem">
@@ -104,10 +108,31 @@ const Navbar = () => {
               }}
               input={<InputBase />}
             >
-              <MenuItem value={fullName}>
-                <Typography>{fullName}</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+              
+              {isUserConnected && (
+                  <div>
+                    
+                   <MenuItem value={fullName}>
+                    <Link  to="/home" className="link">
+                      <Typography>{fullName}</Typography>
+                    </Link>
+                   </MenuItem>
+                    <MenuItem onClick={() => dispatch(setLogout())}>
+                    Log Out
+                  </MenuItem>
+                  </div>
+                  
+                   )
+                }
+                 { (!isUserConnected) && (
+                   <Link  to="/login" className="link">
+                  <MenuItem >
+                    Log In
+                  </MenuItem>
+                  </Link>)
+                }
+               
+            
             </Select>
           </FormControl>
         </FlexBetween>
@@ -158,8 +183,10 @@ const Navbar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton>
-            <Message sx={{ fontSize: "25px" }} />
-            <Notifications sx={{ fontSize: "25px" }} />
+          
+          <Message sx={{ fontSize: "25px" }} />
+            <Notifications sx={{ fontSize: "25px" }} /> 
+          
             <Help sx={{ fontSize: "25px" }} />
             <FormControl variant="standard" value={fullName}>
               <Select
@@ -179,12 +206,29 @@ const Navbar = () => {
                 }}
                 input={<InputBase />}
               >
-                <MenuItem value={fullName}>
-                  <Typography>{fullName}</Typography>
-                </MenuItem>
-                <MenuItem onClick={() => dispatch(setLogout())}>
-                  Log Out
-                </MenuItem>
+                {isUserConnected && (
+                  <div>
+                    
+                   <MenuItem value={fullName}>
+                    <Link  to="/home" className="link">
+                      <Typography>{fullName}</Typography>
+                    </Link>
+                   </MenuItem>
+                    <MenuItem onClick={() => dispatch(setLogout())}>
+                    Log Out
+                  </MenuItem>
+                  </div>
+                  
+                   )
+                }
+                 { (!isUserConnected) && (
+                   <Link  to="/login" className="link">
+                  <MenuItem >
+                    Log In
+                  </MenuItem>
+                  </Link>)
+                }
+               
               </Select>
             </FormControl>
           </FlexBetween>
