@@ -21,6 +21,8 @@ import { createPost } from "./controllers/posts.js";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import { users, posts } from "./data/index.js";
+import cookieSession from 'cookie-session';
+import passport from 'passport';
 
 
 /* CONFIGURATIONS */
@@ -34,10 +36,19 @@ app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin' }));
 app.use(morgan( 'common'));
 app.use(bodyParser.json({limit: '30mb', extended:true}));
 app.use(bodyParser.urlencoded({limit: '30mb', extended:true}));
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+    methodes: "GET, POST, PUT, DELETE",
+    credentials: true,
+}
+));
 app.use('/assets', express.static(path.join(__dirname, 'public/assets' )));
 
 
+/* COOKIE SESSION */
+app.use (cookieSession({ name : "session", keys: ["ruben"], maxAge : 24*60*60*100 }));
+app.use(passport.initialize());
+app.use(passport.session());
 /* FILE STORAGE */
 
 const storage = multer.diskStorage({

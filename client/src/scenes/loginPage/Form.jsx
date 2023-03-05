@@ -7,6 +7,11 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import GoogleIcon from '@mui/icons-material/Google';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -102,6 +107,10 @@ const Form = () => {
     if (isRegister) await register(values, onSubmitProps);
   };
 
+  const google = () => {
+    window.open("http//localhost:5000/auth/google", "_blank");
+  }
+
   return (
     <Formik
       onSubmit={handleFormSubmit}
@@ -118,6 +127,7 @@ const Form = () => {
         setFieldValue,
         resetForm
       }) => (
+        <>
         <form onSubmit={handleSubmit}>
           <Box
             display="grid"
@@ -267,8 +277,34 @@ const Form = () => {
             </Typography>
           </Box>
         </form>
+        <div className="login">
+          <div className="wrapper">
+         
+               
+                  <div className="loginButton google" onClick={google}>
+                   <GoogleIcon/>
+                  </div>
+              
+                  <div className="loginButton facebook">
+                    <FacebookIcon/>
+                  </div>
+                
+                  <div className="loginButton github">
+                    <GitHubIcon/>
+                  </div>
+                  <div className="loginButton twitter">
+                    <TwitterIcon/>
+                  </div>
+               
+          
+          </div>
+         </div>
+      </>
+        
       )}
     </Formik>
+   
+   
   );
 };
 

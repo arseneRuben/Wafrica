@@ -47,6 +47,10 @@ import { setPost } from "../../state";
       const updatedPost = await response.json();
       dispatch(setPost({ post: updatedPost }));
     };
+
+    const handleClick = function (event) {
+      console.log(event.target);
+    };
   
     return (
       <WidgetWrapper m="2rem 0">
@@ -62,6 +66,8 @@ import { setPost } from "../../state";
         {picturePath && (
           <img
             width="100%"
+            onClick={handleClick}
+            id={postId}
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}

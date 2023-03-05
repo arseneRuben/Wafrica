@@ -56,7 +56,7 @@ const Navbar = () => {
             },
           }}
         >
-          Wafricapedia
+          FacebookApp
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween

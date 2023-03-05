@@ -4,7 +4,47 @@
   body,
   #root,
   .app {
-height: 100%;
-width: 100%;
-font-family: 'Rubik', 'Times New Roman', Times, serif; 
- }
+    height: 100%;
+    width: 100%;
+    font-family: 'Rubik', 'Times New Roman', Times, serif;
+  }
+
+  .login {
+    margin: 50px;
+    height: calc(100vh-50px);
+  }
+
+  .login .wrapper {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: auto;
+  }
+
+  .loginButton {
+    width: 50px;
+    padding: 15px 5px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .google {
+    background-color: red;
+    text-align: center;
+  }
+
+  .facebook {
+    background-color: blue;
+    text-align: center;
+  }
+
+  .github {
+    background-color: black;
+    text-align: center;
+  }
+
+  .twitter {
+    background-color: blueviolet;
+    text-align: center;
+  }

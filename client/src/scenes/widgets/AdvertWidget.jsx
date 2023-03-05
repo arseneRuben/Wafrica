@@ -25,7 +25,7 @@ const AdvertWidget = () => {
       />
       <FlexBetween>
         <Typography color={main}>Harmattan</Typography>
-        <Typography color={medium}>harmattan.com</Typography>
+        <Typography color={medium}>harmattan .com</Typography>
       </FlexBetween>
       <Typography color={medium} m="0.5rem 0">
         Your pathway to stunning and immaculate beauty and made sure your skin
