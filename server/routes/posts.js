@@ -2,6 +2,7 @@ import express from "express";
 import { getFeedPosts, getUserPosts, likePost , createPost} from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
+// All the routes that have to do with posts
 const router = express.Router();
 
 /* READ */

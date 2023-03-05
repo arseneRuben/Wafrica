@@ -7,4 +7,5 @@ const PostDetails = () => {
             <p className="mediaSupport"></p>
         </div>
     );
-}
+};
+export default Post;
