@@ -5,7 +5,7 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./state";
 
-import { Provider } from "react-redux";
+import { Provider } from "react-redux"; // Keep track of global state in oder to access on it in anywhere in the app
 import {
   persistStore,
   persistReducer,

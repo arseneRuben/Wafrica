@@ -1,9 +1,13 @@
 import { Box, useMediaQuery , Container, AppBar, Typography, Grow, Grid } from "@mui/material";
 import Form from "../../components/Form/Form";
 import Posts from "../../components/Posts/Posts";
-
+import { Provider } from "react-redux";
+import {createStore, applyMiddleware, compose} from 'redux';
+import thunk from "redux-thunk";
 import Navbar from "../navbar";
+import reducers from '../../reducers';
 
+const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 const VideoBlogPage = () => {
 
@@ -14,6 +18,7 @@ const VideoBlogPage = () => {
 
 
   return (
+    <Provider store={store}>
     <Box>
       <Navbar />
       
@@ -42,6 +47,7 @@ const VideoBlogPage = () => {
         </Box>
       </Box>
     </Box>
+    </Provider>
   );
 };
 
