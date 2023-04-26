@@ -42,7 +42,11 @@ const UserSchema = new mongoose.Schema(
       location: String,
       viewedProfile: Number,
       impressions: Number,
-
+      isAdmin: {
+        type: Boolean,
+        require: true,
+        default: false
+      }
 
       
       
